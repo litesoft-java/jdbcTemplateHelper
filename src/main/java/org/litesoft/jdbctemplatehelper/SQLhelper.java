@@ -175,6 +175,9 @@ public class SQLhelper<T, E> implements RowMapper<E> {
         assertEntityTypeHasID( "getIDs" );
         whereClause = NotNull.ConstrainTo.valueOr( whereClause, new WhereClause() );
         if ( greaterThan != null ) {
+            if ( !whereClause.isEmpty() ) {
+                whereClause.add( WhereClause.AND );
+            }
             whereClause.add( idColumnName + " > ?", greaterThan );
         }
         String sql = "SELECT " + idColumnName + " FROM " + tableName +

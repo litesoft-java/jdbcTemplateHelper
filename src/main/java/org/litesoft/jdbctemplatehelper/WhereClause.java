@@ -59,6 +59,10 @@ public class WhereClause {
 
     private final List<Entry> entries = new ArrayList<>();
 
+    public boolean isEmpty() {
+        return entries.isEmpty();
+    }
+
     public WhereClause add( Entry entry ) {
         if ( entry != null ) {
             entries.add( entry );
